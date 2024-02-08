@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learn front everyday</title>
+</head>
+<body>
+    <h2>What Can JavaScript Do?</h2>
+
+    <!-- 顯示時間 -->
+    <button type="button" onclick="document.getElementById('demo').innerHTML = Date()">Click me to display Date and Time.</button>
+
+    <!-- 改變文字內容 -->
+    <p id="demo">JavaScript can change HTML content.</p>    
+    <button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button><br>
+    
+    <!-- 開關燈 -->
+    <p>JavaScript can change HTML attribute values.</p>
+    <p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+    <button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the  light</button>
+    <img id="myImage" src="pic_bulboff.gif" style="width: 100px">
+    <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+
+    <!-- 改變HTML Styles -->
+    <p id="demo2">JavaScript can change the style of an HTML element</p>
+    <button type="button" onclick="document.getElementById('demo2').style.fontSize='35px'">Click Me!</button>
+
+    <!-- JavaScript Can Hide HTML Elements -->
+    <p id="demo3">JavaScript can hide and show HTML element</p>
+    <button type="button" onclick="document.getElementById('demo3').style.display='none'">Hide!</button>
+    <button type="button" onclick="document.getElementById('demo3').style.display='block'">Show!</button>
+
+    <h2>JavaScript in Body</h2>
+
+    <p id="demo4"></p>
+    <script>
+    document.getElementById("demo4").innerHTML = "My First JavaScript";
+    </script>
+
+    <!-- Demo JavaScript in Head -->
+    <h2>Demo JavaScript in Head</h2>
+
+    <p id="demo5">A Paragraph.</p>
+    <button type="button" onclick="myfunction()">Try it</button>
+
+    <!-- JavaScript in Body -->
+    <h2>Demo JavaScript in Body</h2>
+
+    <p id="demo6">A Paragraph</p>
+    <button type="button" onclick="myfunction()">Try it</button>
+    <script src ="myScript.js"></script>
+
+    <!-- JavaScript Output -->
+    <!-- Using innerHTML -->
+    <h2>My First Web Page</h2>
+    <p>My First Paragraph</p>
+    <p id="demo7"></p>
+    <script>
+        document.getElementById("demo7").innerHTML = 
+        5 + 6;
+    </script>
+ 
+    <!-- Using document.write() -->
+    <script>
+        document.write(7 + 6);
+    </script>
+
+    <!-- Using window.alert() -->
+    <!-- <script>
+        window.alert(5 + 6);
+    </script> -->
+    <!-- can skip the window keyword. -->
+    <!-- <script>
+        alert(8 + 2);
+    </script> -->
+
+    <!-- Using console.log() -->
+    <h2>Activate Debugging</h2>
+    <p>F12 on your keyboard will activate debugging.</p>
+    <p>Then select "Console" in the debugger menu.</p>
+    <p>Then click Run again.</p>
+    <script>
+        console.log(5 + 8);
+    </script>
+
+    <!-- JavaScript Print -->
+    <h2>The window.print() Method</h2>
+    <p>Click the button to print the current page.</p>
+    <button onclick="window.print()">Print this page</button>
+
+    <!-- JavaScript Statements -->
+    <h2>JavaScript Statements</h2>
+    <p>A <b>JavaScript program</b> is a list of <b>statements</b> to be executed by a computer.</p>
+    <!-- <p id="demo8"></p>
+    <script>
+        let x, y, z;
+        x = 5;
+        y = 6;
+        z = x + y;
+
+        document.getElementById("demo8").innerHTML = 
+        "The value of z is " + z + ".";
+    </script> -->
+
+    <h2>JavaScript Statements</h2>
+    <p>In HTML, JavaScript statements are executed by the browser.</p>
+    <p>The best place to break a ode line is after an operator or a comma.</p>
+    <p id="demo9"></p>
+    <script>
+        document.getElementById("demo9").innerHTML = 
+        "Hello Dolly.";
+    </script>
+    <!-- JavaScript Code Blocks -->
+    <p>JavaScript code blocks are written between { and }</p>
+    <button type="button" onclick="myfunction()">Click Me!</button>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    <script>
+        function myfunction() {
+            document.getElementById("demo10").innerHTML =
+            "Hello Dolly!";
+
+            document.getElementById("demo11").innerHTML = 
+            "How are you?";
+        }
+    </script>
+
+    <!-- JavaScript Syntax -->
+    <!-- JavaScript Literals -->
+    <h2>JavaScript Numbers</h2>
+    <p>Number can be written with or without decimals</p>
+    <p id="demo12"></p>
+    <script>
+        document.getElementById("demo12").innerHTML = 10.50;
+    </script>
+
+    <!-- JavaScript Strings -->
+    <h2>JavaScript Strings</h2>
+    <p>Strings can be written with double or single quotes.</p>
+    <p id="demo13"></p>
+    <script>
+        document.getElementById("demo13").innerHTML = "John Doe";
+    </script>
+
+    <!-- JavaScript Variables -->
+    <h2>JavaScript Variables</h2>
+    <p>In this example, x is defined as a variable.Then, x is assigned the value of 6:</p>
+    <p id="demo14"></p>
+    <script>
+        let x1;
+        x1 = 6;
+        document.getElementById("demo14").innerHTML = x1;
+    </script>
+
+    <!-- JavaScript Operators -->
+    <h2>JavaScript Operators</h2>
+    <p>JavaScript uses arithmetic operators to compute values (just like algebra).</p>
+    <p id="demo15"></p>
+    <script>
+        document.getElementById("demo15").innerHTML = (5 + 6) * 10;
+    </script>
+    <!-- Assigning JavaScript Values -->
+    <h2>Assigning  JavaScript Values</h2>
+    <p>In JavaScript the = operator is used to assign values to variables.</p>
+    <p id="demo16"></p>
+    <script>
+        let ax, ay;
+        ax = 5;
+        ay = 9;
+        document.getElementById("demo16").innerHTML = ax + ay;
+    </script>
+
+    <!-- JavaScript Expressions -->
+    <h2>JavaScript Expressions</h2>
+    <p>Expressions compute to values.</p>
+    <p id="demo17"></p>
+    <script>
+        document.getElementById("demo17").innerHTML = 
+        5 * 10;
+    </script>
+
+    <p id="demo18"></p>
+    <script>
+        var Ex;
+        Ex = 5;
+        document.getElementById("demo18").innerHTML = 
+        Ex * 10;
+    </script>
+
+    <p id="demo19"></p>
+    <script>
+        document.getElementById("demo19").innerHTML = 
+        "John" + " " + "Doe";
+    </script>
+
+    <!-- JavaScript Keywords -->
+    <h2>The <b>let</b> Keyword Creates Variables</h2>
+    <p id="demo20"></p>
+    <script>
+        let kx, ky;
+        kx = 5 + 6;
+        ky = kx * 10;
+        document.getElementById("demo20").innerHTML = 
+        ky;
+    </script>
+
+    <h2>The var Keyword Creates Variables</h2>
+    <p id="demo21"></p>
+    <script>
+        var kx2, ky2;
+        kx2 = 5 + 6;
+        ky2 = kx2 * 10;
+        document.getElementById("demo21").innerHTML = 
+        ky2;
+    </script>
+
+    <!-- JavaScript is Case Sensitive -->
+    <h2>JavaScript is Case Sensitive</h2>
+    <p>Try to change lastName to lastname.</p>
+    <p id="demo22"></p>
+    <script>
+        let lastname, lastName;
+        lastName = "Doe";
+        lastname = "Peterson";
+        document.getElementById("demo22").innerHTML = 
+        lastName + " " + lastname;
+    </script>
+
+    <!-- JavaScript Variables -->
+    <h1>JavaScript Variables</h1>
+    <p>In this example, x, y, and z are undeclared.</p>
+    <p>They are automatically declared whenfirst used.</p>
+    <p id="demo23"></p>
+    <script>
+        vx = 5;
+        vy = 6;
+        vz = vx + vy;
+        document.getElementById("demo23").innerHTML = 
+        "The value of z is:" + vz;
+    </script>
+
+    <p>In this example, x, y, and z are variables.</p>
+    <p id="demo24"></p>
+    <script>
+        var x = 5;
+        var y = 9;
+        var z = x + y;
+        document.getElementById("demo24").innerHTML = 
+        "The value of z is:" + z;
+    </script>
+
+    <p>In this example, price1, price2, and total are variables</p>
+    <p id="demo25"></p>
+    <script>
+        const price1 = 10;
+        const price2 = 9;
+        let total = price1 + price2;
+        document.getElementById("demo25").innerHTML = 
+        "The total is:" + total;
+    </script>
+
+    <!-- JavaScript Data Types -->
+    <p>Strings are written with quotes.</p>
+    <p>Numbers are written without quotes.</p>
+    <p id="demo26"></p>
+    <script>
+        const pi = 3.14;
+        let person = "John Doe";
+        let answer = 'Yes I am!';
+        document.getElementById("demo26").innerHTML = 
+        pi + "<br>" + person + "<br>" + answer;
+    </script>
+
+    <!-- Declaring a JavaScript Variable -->
+    <p>Create a variable, assign a value to it, and display it:</p>
+    <p id="demo27"></p>
+    <script>
+        let carName = "Volvo";
+        document.getElementById("demo27").innerHTML =
+        carName;
+    </script>
+
+    <!-- One Statement, Many Variables -->
+    <p>You can declare many variables in one statement.</p>
+    <p id="demo28"></p>
+    <script>
+        let person2 = "John Doe", carName2 = "Honda", price = 200;
+        document.getElementById("demo28").innerHTML =
+        carName2;
+    </script>
+
+    <!-- Value = undefined -->
+    <p>A variable without a value has the value of:</p>
+    <p id="demo29"></p>
+    <script>
+        let carName3;
+        document.getElementById("demo29").innerHTML =
+        carName3;
+    </script>
+
+    <!-- JavaScript Arithmetic -->
+    <p>The result of adding 5 + 2 + 3 is:</p>
+    <p id="demo30"></p>
+    <script>
+        let x2 = 5 + 2 + 3;
+        document.getElementById("demo30").innerHTML =
+        x2;
+    </script>
+
+    <!-- JavaScript Dollar Sign $ -->
+    <P>The dollar sign is treated as a letter in JavaScript names.</P>
+    <p id="demo31"></p>
+    <script>
+        let $$$ = 2;
+        let $myMoney = 5;
+        document.getElementById("demo31").innerHTML =
+        $$$ + $myMoney;
+    </script>
+
+    <!-- JavaScript Underscore (_) -->
+    <p>The Underscore is treated as a letter in JavaScript names.</p>
+    <p id="demo32"></p>
+    <script>
+        let _x = 2;
+        let _100 = 6;
+        document.getElementById("demo32").innerHTML =
+        _x + _100;
+    </script>
+</body>
+</html>

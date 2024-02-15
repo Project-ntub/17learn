@@ -117,5 +117,180 @@
       CSS styles are added to make it easier to separate the divs, 
       and to make them more pretty:)
     </p>
+
+  <!-- Aligning <div> elements side by side -->
+    <!-- Float -->
+    <div class="mycontainer">
+      <div style="background-color: #bdc5ff;">
+        <h2>London</h2>
+        <p>London is the capital city of England.</p>
+        <p>London has over 13 million inhabitants.</p>
+      </div>
+
+      <div style="background-color: #d6bdff;">
+        <h2>Oslo</h2>
+        <p>Oslo is the capital city of Norway.</p>
+        <p>Oslo has over 600.000 inhabitants.</p>
+      </div>
+
+      <div style="background-color: #bde6ff;">
+        <h2>Rome</h2>
+        <p>Rome is the capital city of Italy.</p>
+        <p>Rome has almost 3 million inhabitants.</p>
+      </div>
+    </div>
+    <br/>
+
+    <!-- Inline-block -->
+    <div class="Inline-block" style="background-color:#b3ff99;">
+      <h2>London</h2>
+      <p>London is the capital city of England.</p>
+      <p>London has over 13 million inhabitants.</p>
+    </div>
+    
+    <div class="Inline-block" style="background-color:#99b3ff;">
+      <h2>Oslo</h2>
+      <p>Oslo is the capital city of Norway.</p>
+      <p>Oslo has over 600.000 inhabitants.</p>
+    </div>
+    
+    <div class="Inline-block" style="background-color:#ff99b3;">
+      <h2>Rome</h2>
+      <p>Rome is the capital city of Italy.</p>
+      <p>Rome has almost 3 million inhabitants.</p>
+    </div>
+
+    <!-- Flex -->
+    <h1>Flexbox Example</h1>
+    <p>Align three DIV elements side by side.</p>
+
+    <div class="myflexbox">
+
+      <div style="background-color: #597f4c;">
+        <h2>London</h2>
+        <p>London is the capital city of England.</p>
+        <p>London has over 13 million inhabitants.</p>
+      </div>
+
+      <div style="background-color: #4c597f;">
+        <h2>Oslo</h2>
+        <p>Oslo is the capital city of Norway.</p>
+        <p>Oslo has over 600.000 inhabitants.</p>
+      </div>
+
+      <div style="background-color: #7f4c59;">
+        <h2>Rome</h2>
+        <p>Rome is the capital city of Italy.</p>
+        <p>Rome has almost 3 million.</p>
+      </div>
+
+    </div>
+
+    <!-- Grid -->
+    <h1>Grid Example</h1>
+    <p>Align three DIV side by side.</p>
+
+    <div class="grid-container">
+      <div style="background-color:
+      #d0e0e3;">
+        <h2>London</h2>
+        <p>London is the capital city of England.</p>
+        <p>London has over 13 million inhabitants.</p>
+      </div>
+      
+      <div style="background-color:#e3d0e0;">
+        <h2>Oslo</h2>
+        <p>Oslo is the capital city of Norway.</p>
+        <p>Oslo has over 600.000 inhabitants.</p>
+      </div>
+      
+      <div style="background-color:#e0e3d0;">
+        <h2>Rome</h2>
+        <p>Rome is the capital city of Italy.</p>
+        <p>Rome has almost 3 million inhabitants.</p>
+      </div>
+    
+    </div>
+
+  <!-- class -->
+    <!-- Using The class Attribute -->
+
+    <div class="city">
+      <h2>London</h2>
+      <p>London is the capital of England.</p>
+    </div>
+
+    <div class="city">
+      <h2>Paris</h2>
+      <p>Paris is the capital of France.</p>
+    </div>
+
+    <div class="city">
+      <h2>Tokyo</h2>
+      <p>Tokyo is the capital of Japan.</p>
+    </div>
+
+    <h1>My <span class="note">Important</span>Heading</h1>
+    <p>This is some <span class="note">important</span> text.</p>
+
+    <!-- The Syntax For Class -->
+    <h2>The class Attribute</h2>
+    <p>Use CSS to style elements with the class name "capital".</p>
+    
+    <h2 class="capital">London</h2>
+    <p>London is the capital of England.</p>
+
+    <h2 class="capital">Paris</h2>
+    <p>Paris is the capital of France.</p>
+
+    <h2 class="capital">Tokyo</h2>
+    <p>Tokyo is the capital of Japan.</p>
+    
+    <!-- Multiple Classes -->
+    <h2>Multiple Classes</h2>
+    <p>
+      Here, all three h2 elements belongs to the "cities" class. In 
+      addition, London also belongs to the "main" class, which 
+      center-aligns the text.
+    </p>
+
+    <h2 class="cities main">London</h2>
+    <h2 class="cities">Paris</h2>
+    <h2 class="cities">Tokyo</h2>
+
+    <!-- Different Elements Can Share Same Class -->
+    <h2>Different Elements Can Share Same Class</h2>
+    <p>
+      Even if the two elements do not have the same tag name, they 
+      can both point to the same class, and get the same CSS 
+      styling:
+    </p>
+
+    <h2 class="france">Paris</h2>
+    <p class="france">Paris is the capital of France.</p>
+
+    <!-- Use of The class Attribute in JavaScript -->
+    <h2>Use of The class Attribute in JavaScript</h2>
+    <p>Click the button to hide all elements with class name "hide"</p>
+
+    <button onclick="myFunction()">Hide elements</button>
+
+    <h2 class="hide">London</h2>
+    <p>London is the capital of England.</p>
+
+    <h2 class="hide">Paris</h2>
+    <p>Paris is the capital of France.</p>
+
+    <h2 class="hide">Tokyo</h2>
+    <p>Tokyo is the capital of Japan.</p>
+
+    <script>
+      function myFunction(){
+        var x = document.getElementsByClassName("hide");
+        for (var i = 0; i < x.length; i++){
+          x[i].style.display = "none";
+        }
+      }
+    </script>
 </body>
 </html>

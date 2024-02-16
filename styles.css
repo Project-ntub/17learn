@@ -60,3 +60,23 @@ div.mycontainer {
     color: LightCyan;
     padding: 10px;
 }
+
+#myHeader {
+    background-color: lightblue;
+    color: black;
+    padding: 40px;
+    text-align: center;
+}
+
+#myHeader2 {
+    background-color: dodgerblue;
+    color: rgb(4, 7, 32);
+    padding: 40px;
+    text-align: center;
+}
+
+.idccity {
+    background-color: rgb(255, 141, 30);
+    color: white;
+    padding: 10px;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>儀表板管理</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <!-- 引入圖表函式庫如 Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="sidebar">
+    <button class="burger" onclick="toggleMenu()"></button>
+    <div class="menu">
+        <nav>
+            <a href="dashboard.html" style="animation-delay: 0,2s;">儀表板管理</a>
+            <a href="#" style="animation-delay: 0,3s;">用戶管理</a>
+            <a href="#" style="animation-delay: 0,4s;">角色管理</a>
+            <a href="#" style="animation-delay: 0,5s;">歷史紀錄</a>
+        </nav>
+    </div>
+    
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>儀表板管理</h1>
+    </header>
+
+    <div class="dashboard">
+      <div class="card">
+        <!-- 卡片內容，比如圖表 -->
+      </div>
+      <div class="card">
+        <!-- 另一個卡片內容 -->
+      </div>
+      <!-- 更多卡片... -->
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+
+</body>
+</html>

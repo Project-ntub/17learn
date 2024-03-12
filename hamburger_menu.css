@@ -12,7 +12,7 @@ body {
     --bar-width: 60px;
     --bar-height: 8px;
     --hamburger-gap: 6px;
-    --foreground: #333;
+    --foreground: #95979A;
     --background: white;
     --hamburger-margin: 5px;
     --animetion-timing: 200ms ease-in-out;
@@ -34,7 +34,7 @@ body {
 
 .hamburger-menu:has(input:checked) {
     --foreground: white;
-    --background: #333;
+    --background: #95979A;
 }
 
 .hamburger-menu:has(input:focus-visible)::before,
@@ -94,6 +94,6 @@ body {
     min-height: 100vh;
 }
 
-.hamburger-menu:has(input:checked) + .sidebar {
+.hamburger-menu:has(input:checked) + .menu {
     translate: 0;
 }

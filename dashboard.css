@@ -161,7 +161,12 @@ body.open .menu a {
   .main-content h1 {
     color: #FFFFFF;
     position: absolute;
-    left: 80px;
+    left: 90px;
+  }
+
+  body.open header h1 {
+    transform: translateX(190px); /* 這個值應該與您的選單寬度相匹配 */
+    transition: transform 0.3s ease; /* 添加平滑過渡效果 */
   }
   
   .dashboard {

@@ -5,6 +5,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
   }
+
   
 .sidebar {
     box-sizing: border-box;
@@ -185,3 +186,11 @@ body.open .menu a {
     /* 根據需要調整大小和其他樣式 */
   }
   
+  .fa-house {
+    font-size: 2.5em; /* 設置圖示大小*/
+    position: fixed; /* 使用 fixed 定位 */
+    top: 40px; /* 距離頂部  */
+    right: 30px; /* 距離右側 */
+    color: white;
+    cursor: pointer;
+  }

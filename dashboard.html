@@ -5,10 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>儀表板管理</title>
   <link rel="stylesheet" href="dashboard.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <!-- 引入圖表函式庫如 Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4ec8f8ba21.js" crossorigin="anonymous"></script>
+
+ 
 </head>
 <body>
+  <div>
+
+    
+  </div>
+  
   <div class="sidebar">
     <button class="burger" onclick="toggleMenu()"></button>
     <div class="menu">
@@ -25,16 +35,27 @@
   <div class="main-content">
     <header>
       <h1>儀表板管理</h1>
+      <i class="fa-solid fa-house fa-2xl"></i>
     </header>
 
     <div class="dashboard">
-      <div class="card">
-        <!-- 卡片內容，比如圖表 -->
+      
+        <div class="bg-white p-4 shadow rounded-lg" style="margin: auto;">
+          <canvas id="monthlySalesBarChart"></canvas>
+        </div>
+        
+      
+      <div class="bg-gray-100">
+        <div class="container mx-auto p-6">
+          <div class="bg-white p-4 shadow rounded-lg">
+            <canvas id="categoryPieChart"></canvas>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <!-- 另一個卡片內容 -->
+      
+      <div class="bg-white p-4 shadow rounded-lg" style="margin: auto;">
+        <canvas id="customerVisitsLineChart"></canvas>
       </div>
-      <!-- 更多卡片... -->
     </div>
   </div>
 

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增圖表</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>新增圖表</h1>
+        <form id="chartForm">
+            <div class="form-group">
+                <label for="dataSet">選擇數據集:</label>
+                <select class="form-control" id="dataSet" name="dataSet">
+                    <!-- 從資料庫獲取的數據集選項 -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="chartType">圖表類型:</label>
+                <select class="form-control" id="chartType" name="chartType">
+                    <option value="line">折線圖</option>
+                    <option value="bar">柱狀圖</option>
+                    <option value="pie">餅圖</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="startDate">開始日期:</label>
+                <input type="date" class="form-control" id="startDate" name="startDate">
+            </div>
+            <div class="form-group">
+                <label for="endDate">結束日期:</label>
+                <input type="date" class="form-control" id="endDate" name="endDate">
+            </div>
+            <button type="submit" class="btn btn-primary">生成圖表</button>
+        </form>
+        <div id="chartContainer" style="margin-top: 30px;">
+            <!-- 圖表顯示區域 -->
+        </div>
+    </div>
+
+    <!-- 引入 jQuery 和 Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- 引入圖表庫，例如 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // 當表單提交時的處理邏輯
+        document.getElementById('chartForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var dataSet = document.getElementById('dataSet').value;
+            var chartType = document.getElementById('chartType').value;
+            var startDate = document.getElementById('startDate').value;
+            var endDate = document.getElementById('endDate').value;
+
+            // 從資料庫拉取數據的 AJAX 請求
+            fetch('/api/get_chart_data/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    dataSet: dataSet,
+                    chartType: chartType,
+                    startDate: startDate,
+                    endDate: endDate
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 根據返回的數據生成圖表
+                generateChart(chartType, data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+
+        // 獲取 CSRF token 的函數
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // 根據數據生成圖表的函數
+        function generateChart(chartType, data) {
+            var ctx = document.getElementById('chartContainer').getContext('2d');
+            new Chart(ctx, {
+                type: chartType,
+                data: data,
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        },
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

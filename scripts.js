@@ -1,83 +1,95 @@
+// Toggle Menu Visibility
 const toggleMenu = () => {
-    document.body.classList.toggle("open");
-}
+  document.body.classList.toggle("open");
+};
 
-const barChartContext = document.getElementById('monthlySalesBarChart').getContext('2d');
-const monthlySalesBarChart = new Chart(barChartContext, {
-  type: 'bar',
-  data: {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-    datasets: [{
-      label: 'Monthly Sales',
-      data: Array.from({ length: 6 }, () => Math.floor(Math.random() * 10000)),
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
+// Chart Management
+const chartsData = [];
+let chartsInstances = [];
+
+// Renders all charts from chartsData
+const renderCharts = () => {
+  const container = document.querySelector('.dashboard');
+  container.innerHTML = '';
+  chartsData.forEach((chartConfig, index) => {
+    const chartContainer = document.createElement('div');
+    chartContainer.className = 'bg-white p-4 shadow rounded-lg m-4';
+    const canvas = document.createElement('canvas');
+    canvas.id = `chart-${index}`;
+    chartContainer.appendChild(canvas);
+    container.appendChild(chartContainer);
+    
+    const chartInstance = new Chart(canvas, chartConfig);
+    chartsInstances[index] = chartInstance; // Update or add the new chart instance
+  });
+};
+
+// Generates random data for charts
+const getRandomData = (count, multiplier) => 
+  Array.from({ length: count }, () => Math.floor(Math.random() * multiplier));
+
+// Creates chart configuration based on title and type
+const createChartConfig = (title, type) => {
+  const data = getRandomData(5, 100); // Simplified to remove duplicate code
+  let backgroundColors, borderColors;
+  
+  switch (type) {
+    case 'line':
+    case 'bar':
+      backgroundColors = 'rgba(54, 162, 235, 0.2)';
+      borderColors = 'rgba(54, 162, 235, 1)';
+      break;
+    case 'pie':
+    case 'doughnut':
+      const colors = [
+        ['rgba(255, 99, 132, 0.2)', 'rgba(255, 99, 132, 1)'],
+        ['rgba(54, 162, 235, 0.2)', 'rgba(54, 162, 235, 1)'],
+        ['rgba(255, 206, 86, 0.2)', 'rgba(255, 206, 86, 1)'],
+        ['rgba(75, 192, 192, 0.2)', 'rgba(75, 192, 192, 1)'],
+        ['rgba(153, 102, 255, 0.2)', 'rgba(153, 102, 255, 1)']
+      ];
+      backgroundColors = colors.map(color => color[0]);
+      borderColors = colors.map(color => color[1]);
+      break;
   }
-});
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  // Generate random data for the pie chart
-  function getRandomData() {
-    return [0, 1, 2, 3, 4].map(() => Math.floor(Math.random() * 100) + 1);
-  }
-
-  const data = {
-    labels: ['Electronics', 'Clothing', 'Home & Garden', 'Health & Beauty', 'Toys & Games'],
-    datasets: [{
-      label: 'Category Sales',
-      data: getRandomData(),
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 206, 86)',
-        'rgb(75, 192, 192)',
-        'rgb(153, 102, 255)'
-      ],
-      hoverOffset: 4
-    }]
-  };
-
-  const config = {
-    type: 'pie',
-    data: data,
+  return {
+    type,
+    data: {
+      labels: ['Sample 1', 'Sample 2', 'Sample 3', 'Sample 4', 'Sample 5'],
+      datasets: [{
+        label: title,
+        data,
+        backgroundColor: backgroundColors,
+        borderColor: borderColors,
+        borderWidth: 1
+      }]
+    },
     options: {
-      responsive: true,
-      maintainAspectRatio: false
+      scales: type === 'bar' ? { y: { beginAtZero: true } } : {}
     }
   };
+};
 
-  new Chart(document.getElementById('categoryPieChart'), config);
-});
+// Create a new chart
+const createChart = (title, type) => {
+  const newChartConfig = createChartConfig(title, type);
+  chartsData.push(newChartConfig);
+  renderCharts();
+};
 
-
-const lineChartContext = document.getElementById('customerVisitsLineChart').getContext('2d');
-const customerVisitsLineChart = new Chart(lineChartContext, {
-  type: 'line',
-  data: {
-    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
-    datasets: [{
-      label: 'Customer Visits',
-      data: Array.from({ length: 5 }, () => Math.floor(Math.random() * 1000)),
-      fill: false,
-      borderColor: 'rgb(75, 192, 192)',
-      tension: 0.1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
+// Delete a specific chart
+const deleteChart = (title) => {
+  const chartIndex = chartsData.findIndex(chart => chart.data.datasets[0].label === title);
+  if (chartIndex > -1) {
+    chartsInstances[chartIndex]?.destroy();
+    chartsData.splice(chartIndex, 1);
+    chartsInstances.splice(chartIndex, 1);
+    renderCharts();
   }
-});
+};
+
+// Demo Initialization
+createChart('Initial Bar Chart', 'bar');
+createChart('Initial Line Chart', 'line');
+createChart('Initial Pie Chart', 'pie');

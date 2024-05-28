@@ -1,196 +1,204 @@
+:root {
+  /* 定义CSS变量以方便后续修改 */
+  --primary-text-color: #FFFFFF;
+  --secondary-text-color: #95979A;
+  --primary-bg-color: #1A1A1A;
+  --menu-bg-color: #95979A;
+  --button-bg-color: #007bff;
+  --button-hover-bg-color: #0056b3;
+  --button-border-color: #007bff;
+  --button-hover-border-color: #004085;
+}
+
 body {
-    color: #FFFFFF;
-    background-color: #FFFFFF;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
+  color: var(--primary-text-color);
+  background-color: var(--primary-bg-color);
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-  
 .sidebar {
-    box-sizing: border-box;
-    color: #FFFFFF;
-    background-color: #FFFFFF;
-    background-size: 400%;
-    background-repeat: no-repeat;
-    background-position: 0% 10%;
-  }
-
+  box-sizing: border-box;
+  color: var(--primary-text-color);
+  background-color: var(--menu-bg-color);
+  background-size: 400%;
+  background-repeat: no-repeat;
+  background-position: 0% 10%;
+}
 
 button {
-    border: 0;
-    padding: 0;
-    background: transparent;
-    cursor: pointer;
-  }
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
 
 .burger,
 .menu {
-    position: fixed;
-  }
+  position: fixed;
+}
 
 .burger {
-    z-index: 3;
-    top: 0;
-    left: 0;
-    display: grid;
-    place-items: center;
-    width: 88px;
-    height: 88px;
-    background-image: url("images/menu_white_48dp.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+  z-index: 3;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 88px;
+  height: 88px;
+  background-image: url("images/menu_white_48dp.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 body.open .burger {
-    background-image: url("images/close_white_48dp.svg");
-  }
+  background-image: url("images/close_white_48dp.svg");
+}
 
 .menu {
-    z-index: 2;
-    top: 0;
-    left: 0;
-    display: grid;
-    place-items: center;
-    width: 250px;
-    height: 100%;
-    background: #95979A;
-    translate: -100% 0;
-    transition: translate 0.375s cubic-bezier(0.175, 0.885, 0.32, 1);
-  }
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 250px;
+  height: 100%;
+  background: var(--menu-bg-color);
+  transform: translateX(-100%);
+  transition: transform 0.375s cubic-bezier(0.175, 0.885, 0.32, 1);
+}
 
 .menu nav {
-    opacity: 0;
-  }
-
-@keyframes menu-in {
-    0% {
-        clip-path: ellipse(60% 60% at 0% 50%);
-    }
-    100% {
-        clip-path: ellipse(120% 120% at 0% 50%);
-    }
-  }
-
-body.open .menu {
-    opacity: 1;
-    visibility: visible;
-    translate: 0;
-    animation: menu-in 0.375s;
-  }
-
-body.open .menu nav {
-    opacity: 1;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+}
 
 .menu nav:hover a {
-    opacity: 0.25;
-  }
+  opacity: 0.25;
+}
 
 .menu nav a:hover {
-    opacity: 1;
-  }
-
-.menu nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  opacity: 1;
+}
 
 .menu a {
-    position: relative;
-    color: #FFFFFF;
-    font-size: 32px;
-    padding: 20px 10px;
-    width: 300px;
-    text-decoration: none;
-    transition: 0.4s;
-  }
+  position: relative;
+  color: var(--primary-text-color);
+  font-size: 32px;
+  padding: 20px 10px;
+  width: 300px;
+  text-decoration: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
 
 .menu a::before,
 .menu a::after {
-    content: "";
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
-    width: 100%;
-    height: 2px;
-    border-radius: 2px;
-    transition: 0.4s;
-  } 
-
-.menu a::after {
-    transform: scaleX(0);
-    transform-origin: 0% 50%;
-    background-color: #f7f7f7;
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--secondary-text-color);
+  border-radius: 2px;
+  transition: transform 0.4s ease;
 }
 
-.menu a:hover::before {
-    opacity: 1;
+.menu a::after {
+  transform: scaleX(0);
+  transform-origin: 0% 50%;
 }
 
 .menu a:hover::after {
-    transform: scaleX(1);
+  transform: scaleX(1);
 }
 
-body.open .menu a {
-    animation: appear 0.25s backwards;
+body.open .menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0%);
+  animation: menu-in 0.375s;
+}
+
+@keyframes menu-in {
+  from { clip-path: ellipse(60% 60% at 0% 50%); }
+  to { clip-path: ellipse(120% 120% at 0% 50%); }
 }
 
 @keyframes appear {
-    0% {
-        opacity: 0;
-        transition: -30px 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+      opacity: 0;
+      transform: translateY(-30px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }
-  
-  .main-content {
-    /* 主內容樣式 */
-  }
 
-  .main-content header {
-    background-color: #0A70D7;
-    width: 100%;
-    height: 85px;
-    position: fixed;
-  }
+.main-content {
+  padding-top: 85px; /* 考虑header固定位置 */
+}
 
-  .main-content h1 {
-    color: #FFFFFF;
-    position: absolute;
-    left: 90px;
-  }
+.main-content header {
+  background-color: #0A70D7;
+  width: 100%;
+  height: 85px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease;
+}
 
-  body.open header h1 {
-    transform: translateX(190px); /* 這個值應該與您的選單寬度相匹配 */
-    transition: transform 0.3s ease; /* 添加平滑過渡效果 */
-  }
-  
-  .dashboard {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 20px;
-    flex-basis: calc(33% - 20px);
-    /* 根據需要調整大小和其他樣式 */
-  }
-  
-  .fa-house {
-    font-size: 2.5em; /* 設置圖示大小*/
-    position: fixed; /* 使用 fixed 定位 */
-    top: 40px; /* 距離頂部  */
-    right: 30px; /* 距離右側 */
-    color: white;
-    cursor: pointer;
-  }
+.main-content h1 {
+  color: var(--primary-text-color);
+  position: relative;
+  left: 90px;
+  top: 20px;
+}
+
+body.open header h1 {
+  transform: translateX(250px); /* 与菜单宽度相匹配 */
+}
+
+.crud-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.crud-controls input,
+.crud-controls select,
+.crud-controls button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: var(--secondary-text-color);
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+}
+
+.crud-controls button {
+  background-color: var(--button-bg-color);
+  color: var(--primary-text-color);
+  border-color: var(--button-border-color);
+}
+
+.crud-controls button:hover {
+  background-color: var(--button-hover-bg-color);
+  border-color: var(--button-hover-border-color);
+}
+
+.fa-house {
+  font-size: 2.5em;
+  position: fixed;
+  top: 40px;
+  right: 30px;
+  color: var(--primary-text-color);
+  cursor: pointer;
+}

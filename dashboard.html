@@ -3,63 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>儀表板管理</title>
+  <title>仪表板管理</title>
   <link rel="stylesheet" href="dashboard.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <!-- 引入圖表函式庫如 Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4ec8f8ba21.js" crossorigin="anonymous"></script>
-
- 
 </head>
 <body>
-  <div>
-
-    
-  </div>
-  
-  <div class="sidebar">
-    <button class="burger" onclick="toggleMenu()"></button>
-    <div class="menu">
-        <nav>
-            <a href="dashboard.html" style="animation-delay: 0,2s;">儀表板管理</a>
-            <a href="#" style="animation-delay: 0,3s;">用戶管理</a>
-            <a href="#" style="animation-delay: 0,4s;">角色管理</a>
-            <a href="#" style="animation-delay: 0,5s;">歷史紀錄</a>
-        </nav>
-    </div>
-    
-  </div>
+  <aside class="sidebar">
+    <button class="burger" aria-label="切换菜单" onclick="toggleMenu()"></button>
+    <nav class="menu">
+        <a href="dashboard.html" style="animation-delay: 0.2s;">仪表板管理</a>
+        <a href="#" style="animation-delay: 0.3s;">用户管理</a>
+        <a href="#" style="animation-delay: 0.4s;">角色管理</a>
+        <a href="#" style="animation-delay: 0.5s;">历史记录</a>
+    </nav>
+  </aside>
 
   <div class="main-content">
     <header>
-      <h1>儀表板管理</h1>
-      <i class="fa-solid fa-house fa-2xl"></i>
+      <div class="header-top">
+        <h1>仪表板管理</h1>
+        <i class="fa-solid fa-house fa-2xl"></i>
+      </div>
+      <div class="crud-controls">
+        <input type="text" id="chartTitle" placeholder="图表标题" />
+        <select id="chartType">
+          <option value="line">折线图</option>
+          <option value="bar">条形图</option>
+          <option value="pie">圆饼图</option>
+        </select>
+        <button onclick="createChart(document.getElementById('chartTitle').value, document.getElementById('chartType').value)">创建图表</button>
+        <button onclick="deleteChart(document.getElementById('chartTitle').value)">删除图表</button>
+      </div>
     </header>
-
+    
+    <!-- Charts will be rendered in this div -->
     <div class="dashboard">
-      
-        <div class="bg-white p-4 shadow rounded-lg" style="margin: auto;">
-          <canvas id="monthlySalesBarChart"></canvas>
-        </div>
-        
-      
-      <div class="bg-gray-100">
-        <div class="container mx-auto p-6">
-          <div class="bg-white p-4 shadow rounded-lg">
-            <canvas id="categoryPieChart"></canvas>
-          </div>
-        </div>
-      </div>
-      
-      <div class="bg-white p-4 shadow rounded-lg" style="margin: auto;">
-        <canvas id="customerVisitsLineChart"></canvas>
-      </div>
+      <!-- Existing chart divs can be removed since charts are dynamically injected -->
     </div>
   </div>
 
   <script src="scripts.js"></script>
-
 </body>
 </html>
